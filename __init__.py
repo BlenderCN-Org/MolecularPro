@@ -36,9 +36,9 @@ def define_props():
     parset.mol_active = bpy.props.BoolProperty(name="mol_active", description="Activate MolecularPro for this particle system", default=False)
     parset.mol_refresh = bpy.props.BoolProperty(name="mol_refresh", description="Simple property used to refresh data in the process", default=True)
     parset.mol_density_active = bpy.props.BoolProperty(name="mol_density_active", description="Control particle weight by density", default=False)
-    item = [("-1", "custom", "Put your own parameter below"), ("1555", "Sand", "1555kg per meter cubed"), ("1000", "Water", "1000kg per meter cubed"), ("7800", "Iron", "7800kg per meter cubed")]
+    item = [("-1", "Custom", "Put your own parameter below"), ("1555", "Sand", "1555kg per meter cubed"), ("1000", "Water", "1000kg per meter cubed"), ("7800", "Iron", "7800kg per meter cubed")]
     parset.mol_matter = bpy.props.EnumProperty(items=item, description="Choose a matter preset for density")
-    parset.mol_density = bpy.props.FloatProperty(name="mol_density", description="Density of the matter kg/cubic meter", default=1000, min=0.001)
+    parset.mol_density = bpy.props.FloatProperty(name="mol_density", description="Density of the matter kg per cubic meter", default=1000, min=0.001)
 
     parset.mol_selfcollision_active = bpy.props.BoolProperty(name="mol_selfcollision_active", description="Activate self collsion between particles in the system", default=False)
     parset.mol_othercollision_active = bpy.props.BoolProperty(name="mol_othercollision_active", description="Activate collision with particles from other systems", default=False)
@@ -308,7 +308,7 @@ class MolecularPanel(bpy.types.Panel):
             row = layout.row()
             row.label(text = "Links:")
             box = layout.box()
-            box.prop(psys.settings,"mol_links_active", text = "Activate Particles Linking")
+            box.prop(psys.settings,"mol_links_active", text = "Activate Particle Linking")
 
             subbox = box.box()
             subbox.enabled  = psys.settings.mol_links_active
@@ -334,7 +334,7 @@ class MolecularPanel(bpy.types.Panel):
             row.prop(psys.settings,"mol_link_damp",text = "Damping")
             row.prop(psys.settings,"mol_link_damprand",text = "Rand Damping")
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_broken",text = "broken")
+            row.prop(psys.settings,"mol_link_broken",text = "Broken")
             row.prop(psys.settings,"mol_link_brokenrand",text = "Rand Broken")
             row = subbox.row()
             layout.separator()
@@ -429,11 +429,8 @@ class MolecularPanel(bpy.types.Panel):
             #row.prop(scn,"timescale",text = "TimeScale")
             #row.label(text = "")
             row = layout.row()
-            row.prop(scn,"mol_substep",text = "mol_substep")
-            row.label(text = "")
-            row = layout.row()
-            row.label(text = "CPU Used:")
-            row.prop(scn,"mol_cpu",text = "CPU")
+            row.prop(scn,"mol_substep",text = "Molecular Substep")
+            row.prop(scn,"mol_cpu",text = "CPU Used")
             row = layout.row()
             row.prop(scn,"mol_bake",text = "Bake All At Ending")
             row.prop(scn,"mol_render",text = "Render At Ending")
@@ -485,7 +482,7 @@ class MolecularPanel(bpy.types.Panel):
                 row.operator("object.mol_set_active_uv",icon = 'GROUP_UVS',text = "Set Active UV (No uvs found)")
             subbox = box.box()
             row = subbox.row()
-            row.label(text = "SUBSTEPS CALCULATOR:")
+            row.label(text = "Substeps Calculator:")
             row = subbox.row()
             row.label(icon = 'INFO',text = "Current Systems Have: " + str(len(psys.particles)) + " particles")
             row = subbox.row()
@@ -503,25 +500,6 @@ class MolecularPanel(bpy.types.Panel):
             row.label(icon = 'ERROR',text = "Multiply Particles Size By: " + str(round(1/factor,5)))
             row = subbox.row()
             row.label(icon = 'ERROR',text = "Multiply Other System Particle Amount By: " + str(round(diff,5)))
-
-            box = layout.box()
-            row = box.row()
-            box.active = False
-            box.alert = False
-            row.alignment = 'CENTER'
-            row.label(text = "THANKS TO ALL DONATORS!")
-            row = box.row()
-            row.alignment = 'CENTER'
-            row.label(text = "If you want donate to support my work")
-            row = box.row()
-            row.alignment = 'CENTER'
-            row.operator("wm.url_open", text=" Click here to Donate ", icon='URL').url = "www.pyroevil.com/donate/"
-            row = box.row()
-            row.alignment = 'CENTER'
-            row.label(text = "or visit: ")
-            row = box.row()
-            row.alignment = 'CENTER'
-            row.label(text = "www.pyroevil.com/donate/")
 
 class MolSimulate(bpy.types.Operator):
     """Tooltip"""
