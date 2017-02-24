@@ -21,6 +21,9 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+sources/cmolcore.c
+sources/cmolcore.cp35-win_amd64.pyd
+sources/cmolcore.html
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
