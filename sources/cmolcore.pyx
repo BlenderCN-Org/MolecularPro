@@ -32,7 +32,7 @@ cdef Particle *parlist = NULL
 cdef SParticle *parlistcopy = NULL
 cdef ParSys *psys = NULL
 cdef KDTree *kdtree = NULL
-print("cmolcore imported with success! v1.01")
+print("MolecularPro simulation core imported with success!")
 
 cpdef init(importdata):
     global fps

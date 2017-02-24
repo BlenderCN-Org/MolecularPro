@@ -1,13 +1,31 @@
+# Copyright 2016 John Roper
+#
+# ##### BEGIN GPL LICENSE BLOCK ######
+#
+# MolecularPro is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# MolecularPro is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MolecularPro.  If not, see <http://www.gnu.org/licenses/>.
+# ##### END GPL LICENSE BLOCK #####
+
 bl_info = {
     "name": "MolecularPro",
     "author": "John Roper",
     "version": (1, 0, 0),
-    "blender": (2, 7, 8),
-    "location": "Properties Editor > Particles Tab",
-    "description": "Adds molecular physics to standard particles.",
+    "blender": (2, 78, 0),
+    "location": "Properties Editor > Particles Tab > MolecularPro",
+    "description": "Control particles using molecular physics",
     "warning": "",
-    "wiki_url": "",
-    "tracker_url": "",
+    "wiki_url": "http://jmroper.com/",
+    "tracker_url": "mailto:johnroper100@gmail.com",
     "category": "Simulation"
 }
 
@@ -15,7 +33,7 @@ import bpy
 try:
     from . import cmolcore
 except:
-    print("cmolcore not working!")
+    print("MolecularPro simulation core not working!")
 
 from random import random
 from math import pi
