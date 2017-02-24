@@ -59,59 +59,60 @@ def define_props():
     parset.mol_link_stiff = bpy.props.FloatProperty(name="mol_link_stiff", description="Stiffness of links between particles", min=0, max=1, default=1)
     parset.mol_link_stiffrand = bpy.props.FloatProperty(name="mol_link_stiffrand", description="Random variation for stiffness", min=0, max=1, default=0)
     parset.mol_link_stiffexp = bpy.props.IntProperty(name="mol_link_stiffexp", description="Give a exponent force to the spring links", default=1, min=1, max=10)
-    parset.mol_link_damp = bpy.props.FloatProperty(name="mol_link_damp", description="Damping effect on spring links",min=0,max=1, default=1)
-    parset.mol_link_damprand = bpy.props.FloatProperty(name="mol_link_damprand", description="Random variation on damping",min=0,max=1, default=0)
-    parset.mol_link_broken = bpy.props.FloatProperty(name="mol_link_broken", description="How much link can stretch before they break. 0.01 = 1%, 0.5 = 50%, 2.0 = 200% ...",min=0, default=0.5, precision = 3)
-    parset.mol_link_brokenrand = bpy.props.FloatProperty(name="mol_link_brokenrand", description="Give a random variation to the stretch limit",min=0,max=1, default=0)
+    parset.mol_link_damp = bpy.props.FloatProperty(name="mol_link_damp", description="Damping effect on spring links", min=0, max=1, default=1)
+    parset.mol_link_damprand = bpy.props.FloatProperty(name="mol_link_damprand", description="Random variation on damping", min=0, max=1, default=0)
+    parset.mol_link_broken = bpy.props.FloatProperty(name="mol_link_broken", description="How much link can stretch before they break. 0.01 = 1%, 0.5 = 50%, 2.0 = 200% ...", min=0, default=0.5, precision=3)
+    parset.mol_link_brokenrand = bpy.props.FloatProperty(name="mol_link_brokenrand", description="Give a random variation to the stretch limit", min=0, max=1, default=0)
 
-    parset.mol_link_samevalue = bpy.props.BoolProperty(name="mol_link_samevalue", description="When active, expansion and compression of the spring have the same value",default=True)
+    parset.mol_link_samevalue = bpy.props.BoolProperty(name="mol_link_samevalue", description="When active, expansion and compression of the spring have the same value", default=True)
 
-    parset.mol_link_estiff = bpy.props.FloatProperty(name="mol_link_estiff", description="Expension stiffness of links between particles",min=0,max=1, default=1)
-    parset.mol_link_estiffrand = bpy.props.FloatProperty(name="mol_link_estiffrand", description="Random variation for expansion stiffness",min=0,max=1,default=0)
+    parset.mol_link_estiff = bpy.props.FloatProperty(name="mol_link_estiff", description="Expension stiffness of links between particles", min=0, max=1, default=1)
+    parset.mol_link_estiffrand = bpy.props.FloatProperty(name="mol_link_estiffrand", description="Random variation for expansion stiffness", min=0, max=1, default=0)
     parset.mol_link_estiffexp = bpy.props.IntProperty(name="mol_link_estiffexp", description="Give an exponent force to the expension spring links", default=1, min=1, max=10)
-    parset.mol_link_edamp = bpy.props.FloatProperty(name="mol_link_edamp", description="Damping effect on expension spring links",min=0,max=1, default=1)
-    parset.mol_link_edamprand = bpy.props.FloatProperty(name="mol_link_edamprand", description="Random variation on expension damping",min=0,max=1, default=0)
-    parset.mol_link_ebroken = bpy.props.FloatProperty(name="mol_link_ebroken", description="How much links can expand before they break. 0.01 = 1%, 0.5 = 50%, 2.0 = 200% ...",min=0, default=0.5, precision = 3)
-    parset.mol_link_ebrokenrand = bpy.props.FloatProperty(name="mol_link_ebrokenrand", description="Give a random variation to the expension stretch limit",min=0,max=1, default=0)
+    parset.mol_link_edamp = bpy.props.FloatProperty(name="mol_link_edamp", description="Damping effect on expension spring links", min=0, max=1, default=1)
+    parset.mol_link_edamprand = bpy.props.FloatProperty(name="mol_link_edamprand", description="Random variation on expension damping", min=0, max=1, default=0)
+    parset.mol_link_ebroken = bpy.props.FloatProperty(name="mol_link_ebroken", description="How much links can expand before they break. 0.01 = 1%, 0.5 = 50%, 2.0 = 200% ...", min=0, default=0.5, precision=3)
+    parset.mol_link_ebrokenrand = bpy.props.FloatProperty(name="mol_link_ebrokenrand", description="Give a random variation to the expension stretch limit", min=0, max=1, default=0)
 
     item = []
-    for i in range(1,12):
-        item.append((str(i),"Relink Group " + str(i),"Relink only with group " + str(i)))
-    parset.mol_relink_group = bpy.props.EnumProperty(items = item, description="Choose a group that with witch new links are possible")
-    parset.mol_relink_chance = bpy.props.FloatProperty(name="mol_relink_chance", description="Chance of a new link being created on collision. 0 = off, 100 = 100% chance",min=0, max=100, default=0)
+    for i in range(1, 12):
+        item.append((str(i), "Relink Group " + str(i), "Relink only with group " + str(i)))
+    parset.mol_relink_group = bpy.props.EnumProperty(items=item, description="Choose a group that with witch new links are possible")
+    parset.mol_relink_chance = bpy.props.FloatProperty(name="mol_relink_chance", description="Chance of a new link being created on collision. 0 = off, 100 = 100% chance", min=0, max=100, default=0)
     parset.mol_relink_chancerand = bpy.props.FloatProperty(name="mol_relink_chancerand", description="Give a random variation to the chance of new links", default=0)
-    parset.mol_relink_tension = bpy.props.FloatProperty(name="mol_relink_tension", description="Make link bigger or smaller than it's created (1 = normal, 0.9 = 10% smaller, 1.15 = 15% bigger)",min=0, precision = 3, default=1)
-    parset.mol_relink_tensionrand = bpy.props.FloatProperty(name="mol_relink_tensionrand", description="Tension random",min=0,max=1, precision = 3, default=0)
-    parset.mol_relink_max=bpy.props.IntProperty(name="mol_relink_max", description="Maximum number of links per particle",min=0,default=16)
-    parset.mol_relink_stiff = bpy.props.FloatProperty(name="mol_relink_stiff", description="Stiffness of links between particles",min=0,max=1, default=1)
-    parset.mol_relink_stiffrand = bpy.props.FloatProperty(name="mol_relink_stiffrand", description="Random variation for stiffness",min=0, max=1,default=0)
-    parset.mol_relink_stiffexp = bpy.props.IntProperty(name="mol_relink_stiffexp", description="Give a exponent force to the spring links",min=1, max=10, default=1)
-    parset.mol_relink_damp = bpy.props.FloatProperty(name="mol_relink_damp", description="Damping effect on spring links",min=0, max=1, default=1)
-    parset.mol_relink_damprand = bpy.props.FloatProperty(name="mol_relink_damprand", description="Random variation on damping",min=0, max=1, default=0)
-    parset.mol_relink_broken = bpy.props.FloatProperty(name="mol_relink_broken", description="How much links can stretch before they break. 0.01 = 1%, 0.5 = 50%, 2.0 = 200% ...",min=0, default=0.5, precision = 3)
-    parset.mol_relink_brokenrand = bpy.props.FloatProperty(name="mol_relink_brokenrand", description="Give a random variation to the stretch limit",min=0, max=1, default=0)
+    parset.mol_relink_tension = bpy.props.FloatProperty(name="mol_relink_tension", description="Make link bigger or smaller than it's created (1 = normal, 0.9 = 10% smaller, 1.15 = 15% bigger)", min=0, precision=3, default=1)
+    parset.mol_relink_tensionrand = bpy.props.FloatProperty(name="mol_relink_tensionrand", description="Tension random", min=0, max=1, precision=3, default=0)
+    parset.mol_relink_max = bpy.props.IntProperty(name="mol_relink_max", description="Maximum number of links per particle", min=0, default=16)
+    parset.mol_relink_stiff = bpy.props.FloatProperty(name="mol_relink_stiff", description="Stiffness of links between particles", min=0, max=1, default=1)
+    parset.mol_relink_stiffrand = bpy.props.FloatProperty(name="mol_relink_stiffrand", description="Random variation for stiffness", min=0, max=1, default=0)
+    parset.mol_relink_stiffexp = bpy.props.IntProperty(name="mol_relink_stiffexp", description="Give a exponent force to the spring links", min=1, max=10, default=1)
+    parset.mol_relink_damp = bpy.props.FloatProperty(name="mol_relink_damp", description="Damping effect on spring links", min=0, max=1, default=1)
+    parset.mol_relink_damprand = bpy.props.FloatProperty(name="mol_relink_damprand", description="Random variation on damping", min=0, max=1, default=0)
+    parset.mol_relink_broken = bpy.props.FloatProperty(name="mol_relink_broken", description="How much links can stretch before they break. 0.01 = 1%, 0.5 = 50%, 2.0 = 200% ...", min=0, default=0.5, precision=3)
+    parset.mol_relink_brokenrand = bpy.props.FloatProperty(name="mol_relink_brokenrand", description="Give a random variation to the stretch limit", min=0, max=1, default=0)
 
-    parset.mol_relink_samevalue = bpy.props.BoolProperty(name="mol_relink_samevalue", description="When active, expansion and compression of the spring have the same value",default=True)
+    parset.mol_relink_samevalue = bpy.props.BoolProperty(name="mol_relink_samevalue", description="When active, expansion and compression of the spring have the same value", default=True)
 
-    parset.mol_relink_estiff = bpy.props.FloatProperty(name="mol_relink_estiff", description="Stiffness of links expension between particles",min=0,max=1, default=1)
-    parset.mol_relink_estiffrand = bpy.props.FloatProperty(name="mol_relink_estiffrand", description="Random variation for expension stiffness",min=0, max=1,default=0)
-    parset.mol_relink_estiffexp = bpy.props.IntProperty(name="mol_relink_estiffexp", description="Give an exponent force to the spring links",min=1, max=10, default=1)
-    parset.mol_relink_edamp = bpy.props.FloatProperty(name="mol_relink_edamp", description="Damping effect on expension spring links",min=0, max=1, default=1)
-    parset.mol_relink_edamprand = bpy.props.FloatProperty(name="mol_relink_deamprand", description="Random variation on damping",min=0, max=0, default=0)
-    parset.mol_relink_ebroken = bpy.props.FloatProperty(name="mol_relink_ebroken", description="How much links can stretch before they break. 0.01 = 1%, 0.5 = 50%, 2.0 = 200% ...",min=0, default=0.5, precision = 3)
-    parset.mol_relink_ebrokenrand = bpy.props.FloatProperty(name="mol_relink_ebrokenrand", description="Give a random variation to the stretch limit",min=0, max=1, default=0)
+    parset.mol_relink_estiff = bpy.props.FloatProperty(name="mol_relink_estiff", description="Stiffness of links expension between particles", min=0, max=1, default=1)
+    parset.mol_relink_estiffrand = bpy.props.FloatProperty(name="mol_relink_estiffrand", description="Random variation for expension stiffness", min=0, max=1, default=0)
+    parset.mol_relink_estiffexp = bpy.props.IntProperty(name="mol_relink_estiffexp", description="Give an exponent force to the spring links", min=1, max=10, default=1)
+    parset.mol_relink_edamp = bpy.props.FloatProperty(name="mol_relink_edamp", description="Damping effect on expension spring links", min=0, max=1, default=1)
+    parset.mol_relink_edamprand = bpy.props.FloatProperty(name="mol_relink_deamprand", description="Random variation on damping", min=0, max=0, default=0)
+    parset.mol_relink_ebroken = bpy.props.FloatProperty(name="mol_relink_ebroken", description="How much links can stretch before they break. 0.01 = 1%, 0.5 = 50%, 2.0 = 200% ...", min=0, default=0.5, precision=3)
+    parset.mol_relink_ebrokenrand = bpy.props.FloatProperty(name="mol_relink_ebrokenrand", description="Give a random variation to the stretch limit", min=0, max=1, default=0)
 
-    parset.mol_var1 = bpy.props.IntProperty(name="mol_var1", description="Current number of particles to calculate substep",min=1, default=1000)
-    parset.mol_var2 = bpy.props.IntProperty(name="mol_var2", description="Current substep",min=1, default=4)
-    parset.mol_var3 = bpy.props.IntProperty(name="mol_var3", description="Targeted number of particles you want to increase or decrease from current system to calculate substep you need to achieve similar effect",min=1, default=1000)
-    parset.mol_bakeuv = bpy.props.BoolProperty(name="mol_bakeuv", description="Bake UV when finished",default=False)
+    parset.mol_var1 = bpy.props.IntProperty(name="mol_var1", description="Current number of particles to calculate substep", min=1, default=1000)
+    parset.mol_var2 = bpy.props.IntProperty(name="mol_var2", description="Current substep", min=1, default=4)
+    parset.mol_var3 = bpy.props.IntProperty(name="mol_var3", description="Targeted number of particles you want to increase or decrease from current system to calculate substep you need to achieve similar effect", min=1, default=1000)
+    parset.mol_bakeuv = bpy.props.BoolProperty(name="mol_bakeuv", description="Bake UV when finished", default=False)
 
-    bpy.types.Scene.mol_timescale_active = bpy.props.BoolProperty(name="mol_timescale_active", description="Activate time scaling",default=False)
+    bpy.types.Scene.mol_timescale_active = bpy.props.BoolProperty(name="mol_timescale_active", description="Activate time scaling", default=False)
     bpy.types.Scene.timescale = bpy.props.FloatProperty(name="timescale", description="Speed up or slow down the simulation with this multiplier", default=1)
-    bpy.types.Scene.mol_substep = bpy.props.IntProperty(name="mol_substep", description="mol_substep. Higher values equal more stable and accurate simulations but longer calculation times",min=0, max=900, default=4)
-    bpy.types.Scene.mol_bake = bpy.props.BoolProperty(name="mol_bake", description="Bake simulation when finished",default=True)
-    bpy.types.Scene.mol_render = bpy.props.BoolProperty(name="mol_render", description="Start rendering animation when simulation is finishs. WARNING: It will freeze Blender until the render is finished!",default=False)
-    bpy.types.Scene.mol_cpu = bpy.props.IntProperty(name="mol_cpu", description="Number of CPU cores used to process the simulation", default=multiprocessing.cpu_count(),min=1,max =multiprocessing.cpu_count())
+    bpy.types.Scene.mol_substep = bpy.props.IntProperty(name="mol_substep", description="mol_substep. Higher values equal more stable and accurate simulations but longer calculation times", min=0, max=900, default=4)
+    bpy.types.Scene.mol_bake = bpy.props.BoolProperty(name="mol_bake", description="Bake simulation when finished", default=True)
+    bpy.types.Scene.mol_render = bpy.props.BoolProperty(name="mol_render", description="Start rendering animation when simulation is finishs. WARNING: It will freeze Blender until the render is finished!", default=False)
+    bpy.types.Scene.mol_cpu = bpy.props.IntProperty(name="mol_cpu", description="Number of CPU cores used to process the simulation", default=multiprocessing.cpu_count(), min=1, max=multiprocessing.cpu_count())
+
 
 def pack_data(initiate):
     global mol_exportdata
@@ -126,8 +127,8 @@ def pack_data(initiate):
                 psys.settings.mol_density = float(psys.settings.mol_matter)
             if psys.settings.mol_active and len(psys.particles) > 0:
                 parlen = len(psys.particles)
-                par_loc = [0,0,0] * parlen
-                par_vel = [0,0,0] * parlen
+                par_loc = [0, 0, 0] * parlen
+                par_vel = [0, 0, 0] * parlen
                 par_size = [0] * parlen
                 par_alive = []
                 for par in psys.particles:
@@ -139,8 +140,8 @@ def pack_data(initiate):
                     if par.alive_state == "DEAD":
                         par_alive.append(3)
 
-                psys.particles.foreach_get('location',par_loc)
-                psys.particles.foreach_get('velocity',par_vel)
+                psys.particles.foreach_get('location', par_loc)
+                psys.particles.foreach_get('velocity', par_vel)
 
                 if initiate:
                     par_mass = []
@@ -157,10 +158,10 @@ def pack_data(initiate):
                     else:
                         psys.settings.timestep = 1 / scene.render.fps
                     """
-                    #psys.settings.count = psys.settings.count
+                    # psys.settings.count = psys.settings.count
                     psys.point_cache.frame_step = psys.point_cache.frame_step
                     psyslen += 1
-                    psys.particles.foreach_get('size',par_size)
+                    psys.particles.foreach_get('size', par_size)
                     if mol_minsize > min(par_size):
                         mol_minsize = min(par_size)
 
@@ -235,18 +236,19 @@ def pack_data(initiate):
                 if initiate:
                     mol_exportdata[0][2] = psyslen
                     mol_exportdata[0][3] = parnum
-                    #print(par_loc)
-                    mol_exportdata.append((parlen,par_loc,par_vel,par_size,par_mass,par_alive,params))
+                    # print(par_loc)
+                    mol_exportdata.append((parlen, par_loc, par_vel, par_size, par_mass, par_alive, params))
                     pass
                 else:
-                    #print(par_loc)
-                    mol_exportdata.append((par_loc,par_vel,par_alive))
+                    # print(par_loc)
+                    mol_exportdata.append((par_loc, par_vel, par_alive))
                     pass
+
 
 class MolecularPanel(bpy.types.Panel):
     """Creates a Panel in the Object properties window"""
     bl_label = "MolecularPro"
-    bl_idname="OBJECT_PT_molecular"
+    bl_idname = "OBJECT_PT_molecular"
     bl_space_type = 'PROPERTIES'
     bl_region_type = 'WINDOW'
     bl_context = "particle"
@@ -272,184 +274,184 @@ class MolecularPanel(bpy.types.Panel):
         if psys is not None:
             layout.enabled = psys.settings.mol_active
             row = layout.row()
-            row.label(text = "Density:")
+            row.label(text="Density:")
             box = layout.box()
-            box.prop(psys.settings, "mol_density_active", text = "Calculate Particle Weight By Density")
+            box.prop(psys.settings, "mol_density_active", text="Calculate Particle Weight By Density")
             subbox = box.box()
-            subbox.enabled  = psys.settings.mol_density_active
+            subbox.enabled = psys.settings.mol_density_active
             row = subbox.row()
-            row.prop(psys.settings, "mol_matter", text = "Preset")
+            row.prop(psys.settings, "mol_matter", text="Preset")
             row = subbox.row()
             if int(psys.settings.mol_matter) == 0:
                 row.enabled = True
             elif int(psys.settings.mol_matter) >= 1:
                 row.enabled = False
-            row.prop(psys.settings, "mol_density", text = "Kg Per Cubic Meter:")
-            #subsubbox = subbox.box()
-            #row = subsubbox.row()
-            #row.label(text = "Particle info:")
-            #row = subsubbox.row()
-            #row.label(icon = "INFO",text = "size: " + str(round(psys.settings.particle_size,5)) + " m")
-            #row.label(icon = "INFO",text = "volume: " + str(round(psys.settings.particle_size**3,5)) + " m3")
-            #row = subsubbox.row()
+            row.prop(psys.settings, "mol_density", text="Kg Per Cubic Meter:")
+            # subsubbox = subbox.box()
+            # row = subsubbox.row()
+            # row.label(text="Particle info:")
+            # row = subsubbox.row()
+            # row.label(icon = "INFO", text="size: " + str(round(psys.settings.particle_size, 5)) + " m")
+            # row.label(icon = "INFO", text="volume: " + str(round(psys.settings.particle_size**3, 5)) + " m3")
+            # row = subsubbox.row()
             pmass = (psys.settings.particle_size**3) * psys.settings.mol_density
-            #row.label(icon = "INFO",text = "mass: " + str(round(pmass,5)) + " kg")
+            # row.label(icon = "INFO", text="mass: " + str(round(pmass, 5)) + " kg")
             row = subbox.row()
-            row.label(icon = "INFO",text = "Total System Approx Weight: " + str(round(len(psys.particles) * pmass,4)) + " kg")
+            row.label(icon="INFO", text="Total System Approx Weight: " + str(round(len(psys.particles) * pmass, 4)) + " kg")
             row = layout.row()
-            row.label(text = "Collision:")
+            row.label(text="Collision:")
             box = layout.box()
-            box.prop(psys.settings,"mol_selfcollision_active", text = "Activate Self Collision")
-            box.prop(psys.settings,"mol_othercollision_active", text = "Activate Collision With Others")
-            box.prop(psys.settings,"mol_collision_group",text = " Collide Only With:")
-            box.prop(psys.settings,"mol_friction",text = "Friction:")
-            box.prop(psys.settings,"mol_collision_damp",text = "Damping:")
+            box.prop(psys.settings, "mol_selfcollision_active", text="Activate Self Collision")
+            box.prop(psys.settings, "mol_othercollision_active", text="Activate Collision With Others")
+            box.prop(psys.settings, "mol_collision_group", text=" Collide Only With:")
+            box.prop(psys.settings, "mol_friction", text="Friction:")
+            box.prop(psys.settings, "mol_collision_damp", text="Damping:")
 
             row = layout.row()
-            row.label(text = "Links:")
+            row.label(text="Links:")
             box = layout.box()
-            box.prop(psys.settings,"mol_links_active", text = "Activate Particle Linking")
+            box.prop(psys.settings, "mol_links_active", text="Activate Particle Linking")
 
             subbox = box.box()
-            subbox.enabled  = psys.settings.mol_links_active
-            subbox.label(text = "Initial Linking (At Birth):")
+            subbox.enabled = psys.settings.mol_links_active
+            subbox.label(text="Initial Linking (At Birth):")
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_length",text = "Search Length")
-            row.prop(psys.settings,"mol_link_rellength",text = "Relative")
+            row.prop(psys.settings, "mol_link_length", text="Search Length")
+            row.prop(psys.settings, "mol_link_rellength", text="Relative")
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_max",text = "Max Links")
+            row.prop(psys.settings, "mol_link_max", text="Max Links")
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_friction",text = "Link Friction")
+            row.prop(psys.settings, "mol_link_friction", text="Link Friction")
             layout.separator()
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_tension",text = "Tension")
-            row.prop(psys.settings,"mol_link_tensionrand",text = "Rand Tension")
+            row.prop(psys.settings, "mol_link_tension", text="Tension")
+            row.prop(psys.settings, "mol_link_tensionrand", text="Rand Tension")
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_stiff",text = "Stiff")
-            row.prop(psys.settings,"mol_link_stiffrand",text = "Rand Stiff")
-            #row = subbox.row()
-            #row.prop(psys.settings,"mol_link_stiffexp",text = "Exponent")
-            #row.label(text = "")
+            row.prop(psys.settings, "mol_link_stiff", text="Stiff")
+            row.prop(psys.settings, "mol_link_stiffrand", text="Rand Stiff")
+            # row = subbox.row()
+            # row.prop(psys.settings, "mol_link_stiffexp", text="Exponent")
+            # row.label(text="")
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_damp",text = "Damping")
-            row.prop(psys.settings,"mol_link_damprand",text = "Rand Damping")
+            row.prop(psys.settings, "mol_link_damp", text="Damping")
+            row.prop(psys.settings, "mol_link_damprand", text="Rand Damping")
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_broken",text = "Broken")
-            row.prop(psys.settings,"mol_link_brokenrand",text = "Rand Broken")
+            row.prop(psys.settings, "mol_link_broken", text="Broken")
+            row.prop(psys.settings, "mol_link_brokenrand", text="Rand Broken")
             row = subbox.row()
             layout.separator()
             row = subbox.row()
-            row.prop(psys.settings,"mol_link_samevalue", text = "Same Values for Compression/Expansion")
+            row.prop(psys.settings, "mol_link_samevalue", text="Same Values for Compression/Expansion")
             row = subbox.row()
-            row.enabled  = not psys.settings.mol_link_samevalue
-            row.prop(psys.settings,"mol_link_estiff",text = "E Stiff")
-            row.prop(psys.settings,"mol_link_estiffrand",text = "Rand Exp Stiff")
-            #row = subbox.row()
-            #row.enabled  = not psys.settings.mol_link_samevalue
-            #row.prop(psys.settings,"mol_link_estiffexp",text = "E Exponent")
-            #row.label(text = "")
+            row.enabled = not psys.settings.mol_link_samevalue
+            row.prop(psys.settings, "mol_link_estiff", text="E Stiff")
+            row.prop(psys.settings, "mol_link_estiffrand", text="Rand Exp Stiff")
+            # row = subbox.row()
+            # row.enabled = not psys.settings.mol_link_samevalue
+            # row.prop(psys.settings, "mol_link_estiffexp", text="E Exponent")
+            # row.label(text="")
             row = subbox.row()
-            row.enabled  = not psys.settings.mol_link_samevalue
-            row.prop(psys.settings,"mol_link_edamp",text = "Exp Damping")
-            row.prop(psys.settings,"mol_link_edamprand",text = "Rand Exp Damping")
+            row.enabled = not psys.settings.mol_link_samevalue
+            row.prop(psys.settings, "mol_link_edamp", text="Exp Damping")
+            row.prop(psys.settings, "mol_link_edamprand", text="Rand Exp Damping")
             row = subbox.row()
-            row.enabled  = not psys.settings.mol_link_samevalue
-            row.prop(psys.settings,"mol_link_ebroken",text = "Exp Broken")
-            row.prop(psys.settings,"mol_link_ebrokenrand",text = "Rand Exp Broken")
+            row.enabled = not psys.settings.mol_link_samevalue
+            row.prop(psys.settings, "mol_link_ebroken", text="Exp Broken")
+            row.prop(psys.settings, "mol_link_ebrokenrand", text="Rand Exp Broken")
 
             subbox = box.box()
             subbox.active = psys.settings.mol_links_active
-            subbox.label(text = "New Linking (At Collision):")
+            subbox.label(text="New Linking (At Collision):")
             row = subbox.row()
-            row.prop(psys.settings,"mol_relink_group",text = "Only Links With:")
+            row.prop(psys.settings, "mol_relink_group", text="Only Links With:")
             row = subbox.row()
-            row.prop(psys.settings,"mol_relink_chance",text = "% Linking")
-            row.prop(psys.settings,"mol_relink_chancerand",text = "Rand % Linking")
+            row.prop(psys.settings, "mol_relink_chance", text="% Linking")
+            row.prop(psys.settings, "mol_relink_chancerand", text="Rand % Linking")
             row = subbox.row()
-            row.prop(psys.settings,"mol_relink_max",text = "Max Links")
-            row = subbox.row()
-            layout.separator()
-            row = subbox.row()
-            row.prop(psys.settings,"mol_relink_tension",text = "Tension")
-            row.prop(psys.settings,"mol_relink_tensionrand",text = "Rand Tension")
-            row = subbox.row()
-            row.prop(psys.settings,"mol_relink_stiff",text = "Stiff")
-            row.prop(psys.settings,"mol_relink_stiffrand",text = "Rand Stiff")
-            #row = subbox.row()
-            #row.prop(psys.settings,"mol_relink_stiffexp",text = "Exp")
-            #row.label(text = "")
-            row = subbox.row()
-            row.prop(psys.settings,"mol_relink_damp",text = "Damping")
-            row.prop(psys.settings,"mol_relink_damprand",text = "Rand Damping")
-            row = subbox.row()
-            row.prop(psys.settings,"mol_relink_broken",text = "broken")
-            row.prop(psys.settings,"mol_relink_brokenrand",text = "Rand Broken")
+            row.prop(psys.settings, "mol_relink_max", text="Max Links")
             row = subbox.row()
             layout.separator()
             row = subbox.row()
-            row.prop(psys.settings,"mol_relink_samevalue", text = "Same Values for Compression/Expansion")
+            row.prop(psys.settings, "mol_relink_tension", text="Tension")
+            row.prop(psys.settings, "mol_relink_tensionrand", text="Rand Tension")
             row = subbox.row()
-            row.enabled  = not psys.settings.mol_relink_samevalue
-            row.prop(psys.settings,"mol_relink_estiff",text = "Exp Stiff")
-            row.prop(psys.settings,"mol_relink_estiffrand",text = "Rand Exp Stiff")
-            #row = subbox.row()
-            #row.enabled  = not psys.settings.mol_relink_samevalue
-            #row.prop(psys.settings,"mol_relink_estiffexp",text = "Exp")
-            #row.label(text = "")
+            row.prop(psys.settings, "mol_relink_stiff", text="Stiff")
+            row.prop(psys.settings, "mol_relink_stiffrand", text="Rand Stiff")
+            # row = subbox.row()
+            # row.prop(psys.settings, "mol_relink_stiffexp", text="Exp")
+            # row.label(text="")
             row = subbox.row()
-            row.enabled  = not psys.settings.mol_relink_samevalue
-            row.prop(psys.settings,"mol_relink_edamp",text = "Exp Damping")
-            row.prop(psys.settings,"mol_relink_edamprand",text = "Rand Exp Damping")
+            row.prop(psys.settings, "mol_relink_damp", text="Damping")
+            row.prop(psys.settings, "mol_relink_damprand", text="Rand Damping")
             row = subbox.row()
-            row.enabled  = not psys.settings.mol_relink_samevalue
-            row.prop(psys.settings,"mol_relink_ebroken",text = "Exp Broken")
-            row.prop(psys.settings,"mol_relink_ebrokenrand",text = "Rand Exp Broken")
+            row.prop(psys.settings, "mol_relink_broken", text="broken")
+            row.prop(psys.settings, "mol_relink_brokenrand", text="Rand Broken")
+            row = subbox.row()
+            layout.separator()
+            row = subbox.row()
+            row.prop(psys.settings, "mol_relink_samevalue", text="Same Values for Compression/Expansion")
+            row = subbox.row()
+            row.enabled = not psys.settings.mol_relink_samevalue
+            row.prop(psys.settings, "mol_relink_estiff", text="Exp Stiff")
+            row.prop(psys.settings, "mol_relink_estiffrand", text="Rand Exp Stiff")
+            # row = subbox.row()
+            # row.enabled = not psys.settings.mol_relink_samevalue
+            # row.prop(psys.settings, "mol_relink_estiffexp", text="Exp")
+            # row.label(text="")
+            row = subbox.row()
+            row.enabled = not psys.settings.mol_relink_samevalue
+            row.prop(psys.settings, "mol_relink_edamp", text="Exp Damping")
+            row.prop(psys.settings, "mol_relink_edamprand", text="Rand Exp Damping")
+            row = subbox.row()
+            row.enabled = not psys.settings.mol_relink_samevalue
+            row.prop(psys.settings, "mol_relink_ebroken", text="Exp Broken")
+            row.prop(psys.settings, "mol_relink_ebrokenrand", text="Rand Exp Broken")
 
             row = layout.row()
-            row.label(text = "UV's:")
+            row.label(text="UV's:")
             box = layout.box()
             row = box.row()
             if obj.data.uv_layers.active is not None:
-                row.prop(psys.settings,"mol_bakeuv",text = "Bake UV At Ending (Current: " + str(obj.data.uv_textures.active.name) + ")" )
+                row.prop(psys.settings, "mol_bakeuv", text="Bake UV At Ending (Current: " + str(obj.data.uv_textures.active.name) + ")")
             else:
                 row.active = False
-                row.prop(psys.settings,"mol_bakeuv",text = "Bake UV At Ending (Current: None)" )
+                row.prop(psys.settings, "mol_bakeuv", text="Bake UV At Ending (Current: None)")
 
             row = layout.row()
-            row.label(text = "")
+            row.label(text="")
             row = layout.row()
-            row.label(text = "Simulate")
+            row.label(text="Simulate")
             row = layout.row()
-            row.prop(scn,"frame_start",text = "Start Frame")
-            row.prop(scn,"frame_end",text = "End Frame")
-            #row = layout.row()
-            #row.prop(scn,"mol_timescale_active",text = "Activate TimeScaling")
-            #row = layout.row()
-            #row.enabled = scn.mol_timescale_active
-            #row.prop(scn,"timescale",text = "TimeScale")
-            #row.label(text = "")
+            row.prop(scn, "frame_start", text="Start Frame")
+            row.prop(scn, "frame_end", text="End Frame")
+            # row = layout.row()
+            # row.prop(scn, "mol_timescale_active", text="Activate TimeScaling")
+            # row = layout.row()
+            # row.enabled = scn.mol_timescale_active
+            # row.prop(scn, "timescale", text="TimeScale")
+            # row.label(text="")
             row = layout.row()
-            row.prop(scn,"mol_substep",text = "Molecular Substep")
-            row.prop(scn,"mol_cpu",text = "CPU Used")
+            row.prop(scn, "mol_substep", text="Molecular Substep")
+            row.prop(scn, "mol_cpu", text="CPU Used")
             row = layout.row()
-            row.prop(scn,"mol_bake",text = "Bake All At Ending")
-            row.prop(scn,"mol_render",text = "Render At Ending")
+            row.prop(scn, "mol_bake", text="Bake All At Ending")
+            row.prop(scn, "mol_render", text="Render At Ending")
             row = layout.row()
             if mol_simrun is False and psys.point_cache.is_baked is False:
                 row.enabled = True
-                row.operator("object.mol_simulate",icon = 'RADIO',text = "Start Molecular Simulation")
+                row.operator("object.mol_simulate", icon='RADIO', text="Start Molecular Simulation")
                 row = layout.row()
                 row.enabled = False
                 row.operator("ptcache.free_bake_all", text="Free All Bakes")
             if psys.point_cache.is_baked and mol_simrun is False:
                 row.enabled = False
-                row.operator("object.mol_simulate",icon = 'RADIO',text = "Simulation Baked")
+                row.operator("object.mol_simulate", icon='RADIO', text="Simulation Baked")
                 row = layout.row()
                 row.enabled = True
                 row.operator("ptcache.free_bake_all", text="Free All Bakes")
             if mol_simrun:
                 row.enabled = False
-                row.operator("object.mol_simulate",icon = 'RADIO',text = "Process: " + mol_timeremain + " left")
+                row.operator("object.mol_simulate", icon='RADIO', text="Process: " + mol_timeremain + " left")
                 row = layout.row()
                 row.enabled = False
                 row.operator("ptcache.free_bake_all", text="Free All Bakes")
@@ -457,53 +459,54 @@ class MolecularPanel(bpy.types.Panel):
             box = layout.box()
             row = box.row()
             box.enabled = True
-            row.label(text = "Molecular Tools:",icon = 'MODIFIER')
+            row.label(text="Molecular Tools:", icon='MODIFIER')
             subbox = box.box()
             row = subbox.row()
-            row.label(text = "Particle UV:")
+            row.label(text="Particle UV:")
             row = subbox.row()
             row.alignment = 'CENTER'
-            row.label(icon = 'INFO',text = "Set current particles position  ")
+            row.label(icon='INFO', text="Set current particles position  ")
             row = subbox.row()
             row.alignment = 'CENTER'
-            row.label(text = "has global or current uv in angular velocity.")
+            row.label(text="has global or current uv in angular velocity.")
             row = subbox.row()
             row.alignment = 'CENTER'
-            row.label(text = " Retrieve it with Cycles particle info node")
+            row.label(text=" Retrieve it with Cycles particle info node")
             row = subbox.row()
-            row.operator("object.mol_set_global_uv",icon = 'GROUP_UVS',text = "Set Global UV")
+            row.operator("object.mol_set_global_uv", icon='GROUP_UVS', text="Set Global UV")
             row = subbox.row()
             if obj.data.uv_layers.active is not None:
                 mol_objuvbake = context.object
                 mol_psysuvbake = context.object.particle_systems.active
-                row.operator("object.mol_set_active_uv",icon = 'GROUP_UVS',text = "Set Active UV (Current: " + str(obj.data.uv_textures.active.name) + ")" )
+                row.operator("object.mol_set_active_uv", icon='GROUP_UVS', text="Set Active UV (Current: " + str(obj.data.uv_textures.active.name) + ")")
             else:
                 row.active = False
-                row.operator("object.mol_set_active_uv",icon = 'GROUP_UVS',text = "Set Active UV (No uvs found)")
+                row.operator("object.mol_set_active_uv", icon='GROUP_UVS', text="Set Active UV (No uvs found)")
             subbox = box.box()
             row = subbox.row()
-            row.label(text = "Substeps Calculator:")
+            row.label(text="Substeps Calculator:")
             row = subbox.row()
-            row.label(icon = 'INFO',text = "Current Systems Have: " + str(len(psys.particles)) + " particles")
+            row.label(icon='INFO', text="Current Systems Have: " + str(len(psys.particles)) + " particles")
             row = subbox.row()
-            row.prop(psys.settings,"mol_var1",text = "Current Number of Particles")
+            row.prop(psys.settings, "mol_var1", text="Current Number of Particles")
             row = subbox.row()
-            row.prop(psys.settings,"mol_var2",text = "Current Substep")
+            row.prop(psys.settings, "mol_var2", text="Current Substep")
             row = subbox.row()
-            row.prop(psys.settings,"mol_var3",text = "Targeted Number of Particles")
+            row.prop(psys.settings, "mol_var3", text="Targeted Number of Particles")
             diff = (psys.settings.mol_var3 / psys.settings.mol_var1)
             factor = (psys.settings.mol_var3**(1/3) / psys.settings.mol_var1**(1/3))
             newsubstep = int(round(factor * psys.settings.mol_var2))
             row = subbox.row()
-            row.label(icon = 'FORWARD',text = "You Must Set New Substep To:   " + str(newsubstep))
+            row.label(icon='FORWARD', text="You Must Set New Substep To:   " + str(newsubstep))
             row = subbox.row()
-            row.label(icon = 'ERROR',text = "Multiply Particles Size By: " + str(round(1/factor,5)))
+            row.label(icon='ERROR', text="Multiply Particles Size By: " + str(round(1/factor, 5)))
             row = subbox.row()
-            row.label(icon = 'ERROR',text = "Multiply Other System Particle Amount By: " + str(round(diff,5)))
+            row.label(icon='ERROR', text="Multiply Other System Particle Amount By: " + str(round(diff, 5)))
+
 
 class MolSimulate(bpy.types.Operator):
     """Tooltip"""
-    bl_idname="object.mol_simulate"
+    bl_idname = "object.mol_simulate"
     bl_label = "Molecular Simulate"
 
     def execute(self, context):
@@ -533,7 +536,7 @@ class MolSimulate(bpy.types.Operator):
         mol_stime = clock()
         scene = bpy.context.scene
         object = bpy.context.object
-        scene.frame_set(frame = scene.frame_start)
+        scene.frame_set(frame=scene.frame_start)
         mol_old_endframe = scene.frame_end
         mol_substep = scene.mol_substep
         scene.render.frame_map_old = 1
@@ -546,16 +549,16 @@ class MolSimulate(bpy.types.Operator):
             fps = scene.render.fps
         cpu = scene.mol_cpu
         mol_exportdata = []
-        mol_exportdata = [[fps,mol_substep,0,0,cpu]]
+        mol_exportdata = [[fps, mol_substep, 0, 0, cpu]]
         mol_stime = clock()
         pack_data(True)
-        #print("sys number",mol_exportdata[0][2])
+        # print("sys number", mol_exportdata[0][2])
         etime = clock()
-        print("  " + "PackData took " + str(round(etime - mol_stime,3)) + "sec")
+        print("  " + "PackData took " + str(round(etime - mol_stime, 3)) + "sec")
         mol_stime = clock()
         mol_report = cmolcore.init(mol_exportdata)
         etime = clock()
-        print("  " + "Export time took " + str(round(etime - mol_stime,3)) + "sec")
+        print("  " + "Export time took " + str(round(etime - mol_stime, 3)) + "sec")
         print("  Total number of particles: " + str(mol_report))
         print("  Starting to process:")
         bpy.ops.wm.mol_simulate_modal()
@@ -582,15 +585,16 @@ class MolSetGlobalUV(bpy.types.Operator):
         scene = bpy.context.scene
         object = bpy.context.object
         psys = object.particle_systems.active
-        coord = [0,0,0] * len(psys.particles)
-        psys.particles.foreach_get("location",coord)
-        psys.particles.foreach_set("angular_velocity",coord)
+        coord = [0, 0, 0] * len(psys.particles)
+        psys.particles.foreach_get("location", coord)
+        psys.particles.foreach_set("angular_velocity", coord)
 
         return {'FINISHED'}
 
+
 class MolSetActiveUV(bpy.types.Operator):
     """Tooltip"""
-    bl_idname="object.mol_set_active_uv"
+    bl_idname = "object.mol_set_active_uv"
     bl_label = "Molecular Set Active UV"
 
     def execute(self, context):
@@ -611,33 +615,33 @@ class MolSetActiveUV(bpy.types.Operator):
         scene = context.scene
         object = mol_objuvbake
 
-        print('  Starting bake uv from:',object.name)
-        #object2 = object.copy()
+        print('  Starting bake uv from:', object.name)
+        # object2 = object.copy()
 
         obdata = object.data.copy()
-        object2 = bpy.data.objects.new(name="mol_uv_temp",object_data = obdata)
+        object2 = bpy.data.objects.new(name="mol_uv_temp", object_data=obdata)
         object2.matrix_world = object.matrix_world
 
         context.scene.objects.link(object2)
-        mod = object2.modifiers.new("tri_for_uv","TRIANGULATE")
+        mod = object2.modifiers.new("tri_for_uv", "TRIANGULATE")
         mod.use_beauty = False
-        newmesh = object2.to_mesh(bpy.context.scene,True,"RENDER",True,False)
+        newmesh = object2.to_mesh(bpy.context.scene, True, "RENDER", True, False)
         object2.data = newmesh
         context.scene.update()
         """
         oldmesh = object.data
         newmesh = object.data.copy()
         object.data = newmesh
-        mod = object.modifiers.new("tri_for_uv","TRIANGULATE")
+        mod = object.modifiers.new("tri_for_uv", "TRIANGULATE")
         mod.use_beauty = False
         bpy.ops.object.modifier_apply(apply_as='DATA', modifier=mod.name)
         """
         psys = mol_psysuvbake
-        #print('-------------Start------------')
+        # print('-------------Start------------')
         for par in psys.particles:
             parloc = (par.location * object2.matrix_world) - object2.location
             point = object2.closest_point_on_mesh(parloc)
-            #print('closest:',par.location,point[0],point[2])
+            # print('closest:', par.location,point[0], point[2])
             vindex1 = object2.data.polygons[point[2]].vertices[0]
             vindex2 = object2.data.polygons[point[2]].vertices[1]
             vindex3 = object2.data.polygons[point[2]].vertices[2]
@@ -650,8 +654,8 @@ class MolSetActiveUV(bpy.types.Operator):
             uv1 = object2.data.uv_layers.active.data[uvindex1].uv.to_3d()
             uv2 = object2.data.uv_layers.active.data[uvindex2].uv.to_3d()
             uv3 = object2.data.uv_layers.active.data[uvindex3].uv.to_3d()
-            #print(vertices1.co,vertices2.co,vertices3.co)
-            #print(uv1,uv2,uv3)
+            # print(vertices1.co, vertices2.co, vertices3.co)
+            # print(uv1, uv2, uv3)
             p = object2.matrix_world * point[0]
             v1 = Vector(v1)
             v2 = Vector(v2)
@@ -659,11 +663,11 @@ class MolSetActiveUV(bpy.types.Operator):
             uv1 = Vector(uv1)
             uv2 = Vector(uv2)
             uv3 = Vector(uv3)
-            #print(a,b,c,uv1,uv2,uv3,p)
-            newuv = barycentric(p,v1,v2,v3,uv1,uv2,uv3)
-            #print('New UVs:',newuv)
+            # print(a, b, c, uv1, uv2, uv3, p)
+            newuv = barycentric(p, v1, v2, v3, uv1, uv2, uv3)
+            # print('New UVs:',newuv)
             parloc = par.location * object2.matrix_world
-            dist = (Vector((parloc[0] - p[0],parloc[1] - p[1],parloc[2] - p[2]))).length
+            dist = (Vector((parloc[0] - p[0], parloc[1] - p[1], parloc[2] - p[2]))).length
             newuv[2] = dist
             newuv = newuv.to_tuple()
             par.angular_velocity = newuv
@@ -674,9 +678,10 @@ class MolSetActiveUV(bpy.types.Operator):
 
         return {'FINISHED'}
 
+
 class MolSimulateModal(bpy.types.Operator):
     """Operator which runs its self from a timer"""
-    bl_idname="wm.mol_simulate_modal"
+    bl_idname = "wm.mol_simulate_modal"
     bl_label = "Simulate Molecular"
     _timer = None
 
@@ -696,7 +701,7 @@ class MolSimulateModal(bpy.types.Operator):
         global mol_objuvbake
         global mol_psysuvbake
 
-        #mol_stime = clock()
+        # mol_stime = clock()
         scene = bpy.context.scene
         frame_end = scene.frame_end
         frame_current = scene.frame_current
@@ -705,7 +710,7 @@ class MolSimulateModal(bpy.types.Operator):
                 fake_context = bpy.context.copy()
                 for obj in bpy.data.objects:
                     for psys in obj.particle_systems:
-                        if psys.settings.mol_active  and len(psys.particles) > 0:
+                        if psys.settings.mol_active and len(psys.particles) > 0:
                             fake_context["point_cache"] = psys.point_cache
                             bpy.ops.ptcache.bake_from_cache(fake_context)
             scene.render.frame_map_new = 1
@@ -718,14 +723,14 @@ class MolSimulateModal(bpy.types.Operator):
                             mol_objuvbake = obj
                             mol_psysuvbake = psys
                             bpy.context.scene.update()
-                            scene.frame_set(frame = psys.settings.frame_start)
+                            scene.frame_set(frame=psys.settings.frame_start)
                             bpy.context.scene.update()
                             bpy.ops.object.mol_set_active_uv()
 
             if frame_current == frame_end and scene.mol_render:
                 bpy.ops.render.render(animation=True)
 
-            scene.frame_set(frame = scene.frame_start)
+            scene.frame_set(frame=scene.frame_start)
 
             cmolcore.memfree()
             mol_simrun = False
@@ -736,33 +741,33 @@ class MolSimulateModal(bpy.types.Operator):
             if frame_current == scene.frame_start:
                 mol_stime = clock()
             mol_exportdata = []
-            #stimex = clock()
+            # stimex = clock()
             pack_data(False)
-            #print("packdata time",clock() - stimex,"sec")
+            # print("packdata time",clock() - stimex, "sec")
             mol_importdata = cmolcore.simulate(mol_exportdata)
             i = 0
-            #stimex = clock()
+            # stimex = clock()
             for obj in bpy.data.objects:
                 for psys in obj.particle_systems:
-                    if psys.settings.mol_active  and len(psys.particles) > 0:
-                        #print(len(mol_importdata[i][1]))
-                        #print(len(psys.particles))
-                        psys.particles.foreach_set('velocity',mol_importdata[1][i])
+                    if psys.settings.mol_active and len(psys.particles) > 0:
+                        # print(len(mol_importdata[i][1]))
+                        # print(len(psys.particles))
+                        psys.particles.foreach_set('velocity', mol_importdata[1][i])
                         i += 1
-            #print("inject new velocity time",clock() - stimex,"sec")
+            # print("inject new velocity time", clock() - stimex,"sec")
             framesubstep = frame_current/(mol_substep+1)
             if framesubstep == int(framesubstep):
                 etime = clock()
                 print("    frame " + str(framesubstep + 1) + ":")
-                print("      Links created:",mol_newlink)
+                print("      Links created:", mol_newlink)
                 if mol_totallink != 0:
-                    print("      Links broken :",mol_deadlink)
-                    print("      Total number of links:",mol_totallink - mol_totaldeadlink,"/",mol_totallink," (",round((((mol_totallink - mol_totaldeadlink) / mol_totallink) * 100),2),"%)")
-                print("      MolecularPro: " + str(round(etime - mol_stime,3)) + " sec")
+                    print("      Links broken :", mol_deadlink)
+                    print("      Total number of links:", mol_totallink - mol_totaldeadlink, "/", mol_totallink, " (", round((((mol_totallink - mol_totaldeadlink) / mol_totallink) * 100), 2), "%)")
+                print("      MolecularPro: " + str(round(etime - mol_stime, 3)) + " sec")
                 remain = (((etime - mol_stime) * (mol_old_endframe - framesubstep - 1)))
-                days = int(strftime('%d',gmtime(remain))) - 1
+                days = int(strftime('%d', gmtime(remain))) - 1
                 mol_timeremain = strftime(str(days) + ' days %H hours %M mins %S secs', gmtime(remain))
-                print("      Remaining time estimated:",mol_timeremain)
+                print("      Remaining time estimated:", mol_timeremain)
                 mol_newlink = 0
                 mol_deadlink = 0
                 mol_stime = clock()
@@ -771,10 +776,10 @@ class MolSimulateModal(bpy.types.Operator):
             mol_deadlink += mol_importdata[3]
             mol_totallink = mol_importdata[4]
             mol_totaldeadlink = mol_importdata[5]
-            scene.frame_set(frame = frame_current + 1)
+            scene.frame_set(frame=frame_current + 1)
             if framesubstep == int(framesubstep):
                 etime2 = clock()
-                print("      Blender: " + str(round(etime2 - stime2,3)) + " sec")
+                print("      Blender: " + str(round(etime2 - stime2, 3)) + " sec")
                 stime2 = clock()
         return {'PASS_THROUGH'}
 
@@ -786,6 +791,7 @@ class MolSimulateModal(bpy.types.Operator):
     def cancel(self, context):
         context.window_manager.event_timer_remove(self._timer)
         return {'CANCELLED'}
+
 
 def register():
     define_props()
