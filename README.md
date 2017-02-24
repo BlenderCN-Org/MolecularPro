@@ -2,7 +2,7 @@
 MolecularPro is an updated version of the Molecular Addon by Jean-Francois Gallant. It is built for the latest version of Blender and it fully apples to the PEP8 standards.
 
 ## Documentation
-You can find all the documentation for the addon on the wiki.
+You can find all the documentation for the addon on the [wiki](https://github.com/johnroper100/MolecularPro/wiki).
 
 ## Building
 Currently, MolecularPro can only be built for 64 bit Windows. Support for other systems are coming soon.
