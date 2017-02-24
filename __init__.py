@@ -523,7 +523,7 @@ class MolecularPanel(bpy.types.Panel):
 
 
 class MolSimulate(bpy.types.Operator):
-    """Tooltip"""
+    """Run the MolecularPro simulation"""
     bl_idname = "object.mol_simulate"
     bl_label = "Molecular Simulate"
 
@@ -584,7 +584,7 @@ class MolSimulate(bpy.types.Operator):
 
 
 class MolSetGlobalUV(bpy.types.Operator):
-    """Tooltip"""
+    """Set the MolecularPro global UVs"""
     bl_idname = "object.mol_set_global_uv"
     bl_label = "Molecular Set UV"
 
@@ -611,7 +611,7 @@ class MolSetGlobalUV(bpy.types.Operator):
 
 
 class MolSetActiveUV(bpy.types.Operator):
-    """Tooltip"""
+    """Set the MolecularPro active UVs"""
     bl_idname = "object.mol_set_active_uv"
     bl_label = "Molecular Set Active UV"
 
@@ -683,7 +683,7 @@ class MolSetActiveUV(bpy.types.Operator):
             uv3 = Vector(uv3)
             # print(a, b, c, uv1, uv2, uv3, p)
             newuv = barycentric(p, v1, v2, v3, uv1, uv2, uv3)
-            # print('New UVs:',newuv)
+            # print('New UVs:', newuv)
             parloc = par.location * object2.matrix_world
             dist = (Vector((parloc[0] - p[0], parloc[1] - p[1], parloc[2] - p[2]))).length
             newuv[2] = dist
