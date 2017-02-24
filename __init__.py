@@ -24,8 +24,8 @@ bl_info = {
     "location": "Properties Editor > Particles Tab > MolecularPro",
     "description": "Control particles using molecular physics",
     "warning": "",
-    "wiki_url": "http://jmroper.com/",
-    "tracker_url": "mailto:johnroper100@gmail.com",
+    "wiki_url": "https://github.com/johnroper100/MolecularPro/wiki",
+    "tracker_url": "https://github.com/johnroper100/MolecularPro/issues",
     "category": "Simulation"
 }
 
