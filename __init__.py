@@ -18,7 +18,7 @@
 
 bl_info = {
     "name": "MolecularPro",
-    "author": "John Roper",
+    "author": "John Roper, Jean-Francois Gallant",
     "version": (1, 0, 0),
     "blender": (2, 78, 0),
     "location": "Properties Editor > Particles Tab > MolecularPro",
